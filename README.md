@@ -1,6 +1,7 @@
 ## face mask app
 
-[![Image from Gyazo](https://i.gyazo.com/1218941497e3e65266b3beb95714052f.gif)](https://gyazo.com/1218941497e3e65266b3beb95714052f)
+![1218941497e3e65266b3beb95714052f](https://user-images.githubusercontent.com/43722788/119267078-3216c980-bc28-11eb-8d30-7097726e998a.gif)
+
 
 [DEMO](https://mask-app-one.vercel.app/)
 
