@@ -1,10 +1,8 @@
-# Getting Started with Create React App
+## face mask app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Image from Gyazo](https://i.gyazo.com/1218941497e3e65266b3beb95714052f.gif)](https://gyazo.com/1218941497e3e65266b3beb95714052f)
 
-## Available Scripts
-
-In the project directory, you can run:
+[DEMO](https://mask-app-one.vercel.app/)
 
 ### `yarn start`
 
