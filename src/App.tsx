@@ -23,7 +23,7 @@ function App() {
     if (!webcam.current || !canvas.current) return;
     const webcamCurrent = webcam.current as any;
     if (webcamCurrent.video.readyState !== 4) {
-      return;
+      detect(model);
     }
     const video = webcamCurrent.video;
     const videoWidth = webcamCurrent.video.videoWidth;
