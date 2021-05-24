@@ -22,6 +22,9 @@ function App() {
   const detect = async (model: MediaPipeFaceMesh) => {
     if (!webcam.current || !canvas.current) return;
     const webcamCurrent = webcam.current as any;
+    if (webcamCurrent.video.readyState !== 4) {
+      return;
+    }
     const video = webcamCurrent.video;
     const videoWidth = webcamCurrent.video.videoWidth;
     const videoHeight = webcamCurrent.video.videoHeight;
