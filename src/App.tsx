@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import "./App.css";
 import "@tensorflow/tfjs-core";
 import "@tensorflow/tfjs-converter";
@@ -12,7 +12,7 @@ function App() {
   const webcam = useRef<Webcam>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
 
-  const useFaceDetect = async () => {
+  const runFaceDetect = async () => {
     const model = await faceLandmarksDetection.load(
       faceLandmarksDetection.SupportedPackages.mediapipeFacemesh
     );
@@ -36,13 +36,14 @@ function App() {
           draw(predictions, ctx, videoWidth, videoHeight);
         });
         detect(model);
-      } else {
-        detect(model);
       }
     }
   };
 
-  useFaceDetect();
+  useEffect(() => {
+    runFaceDetect();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [webcam.current?.video?.readyState])
 
   return (
     <div className="App">
