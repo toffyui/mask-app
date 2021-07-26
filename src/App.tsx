@@ -20,24 +20,24 @@ function App() {
   };
 
   const detect = async (model: MediaPipeFaceMesh) => {
-    if (!webcam.current || !canvas.current) return;
-    const webcamCurrent = webcam.current as any;
-    if (webcamCurrent.video.readyState !== 4) {
-      detect(model);
+    if (webcam.current && canvas.current) {
+      const webcamCurrent = webcam.current as any;
+      if (webcamCurrent.video.readyState === 4) {
+        const video = webcamCurrent.video;
+        const videoWidth = webcamCurrent.video.videoWidth;
+        const videoHeight = webcamCurrent.video.videoHeight;
+        canvas.current.width = videoWidth;
+        canvas.current.height = videoHeight;
+        const predictions = await model.estimateFaces({
+          input: video,
+        });
+        const ctx = canvas.current.getContext("2d") as CanvasRenderingContext2D;
+        requestAnimationFrame(() => {
+          draw(predictions, ctx, videoWidth, videoHeight);
+        });
+        detect(model);
+      }
     }
-    const video = webcamCurrent.video;
-    const videoWidth = webcamCurrent.video.videoWidth;
-    const videoHeight = webcamCurrent.video.videoHeight;
-    canvas.current.width = videoWidth;
-    canvas.current.height = videoHeight;
-    const predictions = await model.estimateFaces({
-      input: video,
-    });
-    const ctx = canvas.current.getContext("2d") as CanvasRenderingContext2D;
-    requestAnimationFrame(() => {
-      draw(predictions, ctx, videoWidth, videoHeight);
-    });
-    detect(model);
   };
 
   useFaceDetect();
