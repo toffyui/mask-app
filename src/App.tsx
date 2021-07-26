@@ -36,6 +36,8 @@ function App() {
           draw(predictions, ctx, videoWidth, videoHeight);
         });
         detect(model);
+      } else {
+        detect(model);
       }
     }
   };
